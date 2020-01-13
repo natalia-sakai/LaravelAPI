@@ -67,6 +67,7 @@ Route::prefix('agape')->group(function () {
 Route::prefix('reuniao')->group(function () {
    //reuniao
    Route::get('reuniao', 'ReuniaoController@reuniao');
+   Route::post('createnewreuniao', 'ReuniaoController@createnewreuniao');
    Route::get('getreuniao', 'ReuniaoController@getreuniao');
    Route::get('getallreuniao', 'ReuniaoController@getallreuniao');
    Route::get('notificacao', 'ReuniaoController@notificacao');
@@ -108,7 +109,7 @@ Route::prefix('auth')->group(function () {
     Route::middleware(['auth:api'])->group(function () {
         Route::get('logout', 'Auth\AuthController@logout');
         Route::get('user', 'Auth\AuthController@user');
-    });
+    });  
 });
 
         

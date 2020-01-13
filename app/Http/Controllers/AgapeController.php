@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Agape;
+use App\Models\Agape;
 use Illuminate\Http\Request;
 
 class AgapeController extends Controller

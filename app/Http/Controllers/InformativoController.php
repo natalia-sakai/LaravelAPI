@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-rmativo;
+use App\Models\Informativo;
 use Illuminate\Http\Request;
 
 class InformativoController extends Controller

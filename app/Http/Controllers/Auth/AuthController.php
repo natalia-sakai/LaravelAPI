@@ -86,19 +86,14 @@ class AuthController extends Controller
                 $tokenResult->token->expires_at
             )->toDateTimeString()
         ]);
-        return response()->json(true);
     }
     
     public function logout(Request $request){
         $request->user()->token()->revoke();
         if($request == null)
-            return response()->json([
-                'message' => 'Logout falhou!'
-            ]);
+            return response()->json('Logout falhou!');
         else
-            return response()->json([
-            'message' => 'Logout feito com sucesso!'
-            ]);
+            return response()->json('Logout feito com sucesso!');
     }
     //validacao
     public function checkpassword(Request $request){
@@ -164,9 +159,9 @@ class AuthController extends Controller
         $password = bcrypt($request->password);
         $resposta = User::where('id', $request->id_user)->update(['password'=> $password]);
         if($resposta == null)
-            return response()->json(['message' => 'Erro!'], 201);
+            return response()->json('Erro!');
         else
-            return response()->json(['message' => 'Senha Atualizada!'], 201);
+            return response()->json('Senha Atualizada!');
     }
 
     public function user(Request $request){

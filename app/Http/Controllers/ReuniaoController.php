@@ -105,4 +105,22 @@ class ReuniaoController extends Controller
         
         return response()->json($reuniaoInfo);
     }
+
+    public function createnewreuniao(Request $request){
+        $request->validate([
+            'data' => 'required|string'
+        ]);
+        $verifica = Reuniao::where('data', $request->data)->first();
+        if($verifica == null){
+            Reuniao::where(['ativo'=> 1])->update(['ativo'=> 0]);
+            $reuniao = new Reuniao;
+            $reuniao->data = $request->data;
+            $reuniao->ativo = 1;
+            $reuniao->save();
+            return response()->json('Reuniao criada!');
+        }
+        else{
+            return response()->json('Reuniao já marcada!');
+        }
+    }
 }
